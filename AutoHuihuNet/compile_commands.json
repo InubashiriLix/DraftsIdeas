@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/inubashiri/09_CPP_LN/AutoHuihuNet/build",
+  "command": "/usr/bin/c++  -I/home/inubashiri/09_CPP_LN/AutoHuihuNet/include -g -std=gnu++20 -o CMakeFiles/HuihuFucker.dir/src/HuihuFucker.cc.o -c /home/inubashiri/09_CPP_LN/AutoHuihuNet/src/HuihuFucker.cc",
+  "file": "/home/inubashiri/09_CPP_LN/AutoHuihuNet/src/HuihuFucker.cc",
+  "output": "CMakeFiles/HuihuFucker.dir/src/HuihuFucker.cc.o"
+},
+{
+  "directory": "/home/inubashiri/09_CPP_LN/AutoHuihuNet/build",
+  "command": "/usr/bin/c++  -I/home/inubashiri/09_CPP_LN/AutoHuihuNet/include -g -std=gnu++20 -o CMakeFiles/HuihuFucker.dir/src/main.cc.o -c /home/inubashiri/09_CPP_LN/AutoHuihuNet/src/main.cc",
+  "file": "/home/inubashiri/09_CPP_LN/AutoHuihuNet/src/main.cc",
+  "output": "CMakeFiles/HuihuFucker.dir/src/main.cc.o"
+}
+]
