@@ -4,3 +4,7 @@ cppPidModule/build
 callback_example/build
 cpp_linear_regration/build/.cache
 cpp_linear_regration/build
+TraceSegFault/.cache
+TraceSegFault/build
+simple_alarm/build
+simple_alarm/.cache
