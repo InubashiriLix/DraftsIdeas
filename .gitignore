@@ -8,3 +8,7 @@ TraceSegFault/.cache
 TraceSegFault/build
 simple_alarm/build
 simple_alarm/.cache
+SNN_history/better_model_conv4_linear2_better_lif.pth
+SNN_history/src/BEST/__pycache__
+SNN_history/src/BEST/better_model_conv4_linear2_better_lif.pth
+SNN_history
