@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperScript/SubScript Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+        
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        textarea:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-super {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-sub {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .result {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            font-size: 18px;
+            min-height: 60px;
+            word-wrap: break-word;
+        }
+        
+        .copy-btn {
+            margin-top: 10px;
+            background: #28a745;
+            color: white;
+            width: 100%;
+        }
+        
+        .copy-btn:hover {
+            background: #218838;
+        }
+        
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7f3ff;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #004085;
+        }
+        
+        .info h3 {
+            margin-bottom: 8px;
+        }
+        
+        .info p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SuperScript/SubScript Generator</h1>
+        
+        <div class="input-group">
+            <label for="inputText">Enter your text:</label>
+            <textarea id="inputText" placeholder="Type text here... e.g., H2O, E=mc2"></textarea>
+        </div>
+        
+        <div class="button-group">
+            <button class="btn-super" onclick="convert('superscript')">
+                Convert to Superscript
+            </button>
+            <button class="btn-sub" onclick="convert('subscript')">
+                Convert to Subscript
+            </button>
+        </div>
+        
+        <div class="input-group">
+            <label for="result">Result:</label>
+            <div id="result" class="result"></div>
+            <button class="copy-btn" onclick="copyResult(this)">Copy to Clipboard</button>
+        </div>
+        
+        <div class="info">
+            <h3>ℹ️ Note:</h3>
+            <p>• Not all characters have superscript/subscript equivalents</p>
+            <p>• Unsupported characters will remain unchanged</p>
+            <p>• Uppercase letters without dedicated glyphs fall back to lowercase forms (e.g., M → ₘ)</p>
+            <p>• Works best with numbers and common letters</p>
+        </div>
+    </div>
+    
+    <script>
+        const SUPERSCRIPT_MAP = {
+            '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+            'a': 'ᵃ', 'b': 'ᵇ', 'c': 'ᶜ', 'd': 'ᵈ', 'e': 'ᵉ', 'f': 'ᶠ', 'g': 'ᵍ', 'h': 'ʰ', 'i': 'ⁱ', 'j': 'ʲ',
+            'k': 'ᵏ', 'l': 'ˡ', 'm': 'ᵐ', 'n': 'ⁿ', 'o': 'ᵒ', 'p': 'ᵖ', 'r': 'ʳ', 's': 'ˢ', 't': 'ᵗ', 'u': 'ᵘ',
+            'v': 'ᵛ', 'w': 'ʷ', 'x': 'ˣ', 'y': 'ʸ', 'z': 'ᶻ',
+            'A': 'ᴬ', 'B': 'ᴮ', 'D': 'ᴰ', 'E': 'ᴱ', 'G': 'ᴳ', 'H': 'ᴴ', 'I': 'ᴵ', 'J': 'ᴶ', 'K': 'ᴷ',
+            'L': 'ᴸ', 'M': 'ᴹ', 'N': 'ᴺ', 'O': 'ᴼ', 'P': 'ᴾ', 'R': 'ᴿ', 'T': 'ᵀ', 'U': 'ᵁ', 'V': 'ⱽ', 'W': 'ᵂ',
+            '+': '⁺', '-': '⁻', '=': '⁼', '(': '⁽', ')': '⁾'
+        };
+
+        const SUBSCRIPT_MAP = {
+            '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉',
+            'a': 'ₐ', 'e': 'ₑ', 'h': 'ₕ', 'i': 'ᵢ', 'j': 'ⱼ', 'k': 'ₖ', 'l': 'ₗ', 'm': 'ₘ', 'n': 'ₙ', 'o': 'ₒ',
+            'p': 'ₚ', 'r': 'ᵣ', 's': 'ₛ', 't': 'ₜ', 'u': 'ᵤ', 'v': 'ᵥ', 'x': 'ₓ',
+            '+': '₊', '-': '₋', '=': '₌', '(': '₍', ')': '₎'
+        };
+
+        function toSuperscript(text) {
+            return [...text].map((char) => {
+                if (SUPERSCRIPT_MAP[char]) return SUPERSCRIPT_MAP[char];
+                const lower = char.toLowerCase();
+                return SUPERSCRIPT_MAP[lower] ?? char;
+            }).join('');
+        }
+
+        function toSubscript(text) {
+            return [...text].map((char) => {
+                if (SUBSCRIPT_MAP[char]) return SUBSCRIPT_MAP[char];
+                const lower = char.toLowerCase();
+                return SUBSCRIPT_MAP[lower] ?? char;
+            }).join('');
+        }
+
+        function convert(mode) {
+            const inputText = document.getElementById('inputText').value;
+
+            if (!inputText) {
+                alert('Please enter some text first!');
+                return;
+            }
+
+            const converter = mode === 'subscript' ? toSubscript : toSuperscript;
+            document.getElementById('result').textContent = converter(inputText);
+        }
+
+        function copyResult(button) {
+            const result = document.getElementById('result').textContent;
+
+            if (!result) {
+                alert('Nothing to copy! Convert some text first.');
+                return;
+            }
+
+            navigator.clipboard.writeText(result).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied! ✓';
+                button.style.background = '#5cb85c';
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#28a745';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy to clipboard. Please copy manually.');
+            });
+        }
+
+        // Allow Ctrl+Enter to trigger superscript conversion for quick use.
+        document.getElementById('inputText').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                convert('superscript');
+            }
+        });
+    </script>
+</body>
+</html>
