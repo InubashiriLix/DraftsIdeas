@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo & Pomodoro Timer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍅 Todo & Pomodoro Timer</h1>
+            <p class="subtitle">Stay focused and productive</p>
+        </header>
+
+        <div class="main-grid">
+            <!-- Pomodoro Timer Section -->
+            <section class="pomodoro-section card">
+                <h2>⏰ Pomodoro Timer</h2>
+                
+                <div class="timer-display" id="timerDisplay">
+                    <div class="time">25:00</div>
+                    <div class="timer-status">Ready to start</div>
+                </div>
+
+                <div class="timer-controls">
+                    <button class="btn btn-primary" id="startWorkBtn" onclick="startPomodoro('work')">
+                        <span>🎯</span> Start Work (25 min)
+                    </button>
+                    <button class="btn btn-secondary" id="startBreakBtn" onclick="startPomodoro('short_break')">
+                        <span>☕</span> Short Break (5 min)
+                    </button>
+                    <button class="btn btn-secondary" id="startLongBreakBtn" onclick="startPomodoro('long_break')">
+                        <span>🌴</span> Long Break (15 min)
+                    </button>
+                    <button class="btn btn-danger" id="stopBtn" onclick="stopPomodoro()" style="display:none;">
+                        <span>⏹</span> Stop
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalSessions">0</div>
+                        <div class="stat-label">Total Sessions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="workSessions">0</div>
+                        <div class="stat-label">Work Sessions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalHours">0h</div>
+                        <div class="stat-label">Total Hours</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Todo List Section -->
+            <section class="todo-section card">
+                <h2>📝 Todo List</h2>
+                
+                <div class="todo-input">
+                    <input type="text" id="todoTitle" placeholder="What needs to be done?" />
+                    <input type="text" id="todoDescription" placeholder="Description (optional)" />
+                    <button class="btn btn-primary" onclick="createTodo()">
+                        <span>➕</span> Add Todo
+                    </button>
+                </div>
+
+                <div class="filter-tabs">
+                    <button class="tab-btn active" onclick="filterTodos('all')">All</button>
+                    <button class="tab-btn" onclick="filterTodos('pending')">Pending</button>
+                    <button class="tab-btn" onclick="filterTodos('in_progress')">In Progress</button>
+                    <button class="tab-btn" onclick="filterTodos('completed')">Completed</button>
+                </div>
+
+                <div class="todo-list" id="todoList">
+                    <!-- Todos will be dynamically added here -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
