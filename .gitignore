@@ -12,3 +12,9 @@ SNN_history/better_model_conv4_linear2_better_lif.pth
 SNN_history/src/BEST/__pycache__
 SNN_history/src/BEST/better_model_conv4_linear2_better_lif.pth
 SNN_history
+VTKexp/ksdd_defect_detection/outputs
+VTKexp/ksdd_defect_detection/scripts/data
+VTKexp/ksdd_defect_detection/scripts/outputs
+VTKexp/ksdd_defect_detection/src/__pycache__
+VTKexp/pcb.jpg
+export/
