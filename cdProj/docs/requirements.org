@@ -1,0 +1,40 @@
+* Functions
+*** select recent projs
+- add current proj to the proj list
+  - notes
+  - last update (may need git logs or other shits)
+- primirary selection:
+  - selection machine
+  - fzf
+  - sorting
+
+*** modify the infos of projs
+- notes
+*** remove current proj
+*** detect all the projs in the disk
+- may need fzf
+- may be daily / monthly detect
+- require ignore lists configs (detect strategy)
+
+* MSCW work
+** Must:
+*user interfaces*
+- project class: notes, modification date, path, tags
+- project list
+- project selection / fzf / sorting 
+
+*DB*: SQLite Engine
+- apis to support sorting / searching /filtering
+- apis to support remove add modify project records
+
+** Should:
+- use fzf to scan the disk for projects records
+- auto update project records based on the existing records
+
+** Could:
+- fzf scan (supporing ignore lists configs)
+
+** Won't:
+- any graphical interfaces
+
+

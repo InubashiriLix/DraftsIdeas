@@ -18,3 +18,9 @@ VTKexp/ksdd_defect_detection/scripts/outputs
 VTKexp/ksdd_defect_detection/src/__pycache__
 VTKexp/pcb.jpg
 export/
+AssemPyCPP/.cache
+AssemPyCPP/__pycache__
+AssemPyCPP/build
+cdProj/.cache
+cdProj/build
+cdProj/out
