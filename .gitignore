@@ -24,3 +24,10 @@ AssemPyCPP/build
 cdProj/.cache
 cdProj/build
 cdProj/out
+MiniKolektorSSD2/test
+MiniKolektorSSD2/train
+MiniKolektorSSD2/test.cache
+MiniKolektorSSD2/train.cache
+MiniKolektorSSD2_flat
+MiniKolektorSSD2/yolov8_project/runs/train/weights
+MiniKolektorSSD2/yolov8_project/runs

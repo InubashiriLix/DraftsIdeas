@@ -1,0 +1,9 @@
+{
+  "model": "yolov8n-cls.pt",
+  "epochs": 30,
+  "imgsz": 64,
+  "batch": 128,
+  "training_time_s": 674.91,
+  "gpu_power_before_W": -1.0,
+  "gpu_power_after_W": -1.0
+}

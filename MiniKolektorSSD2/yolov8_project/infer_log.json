@@ -1,0 +1,46 @@
+{
+  "weights": "/home/inubashiri/01_ESN/ALL_DATASET_TRIAL/FMNIST/FMNIST/dataset/MiniKolektorSSD2/yolov8_project/runs/train/weights/best.pt",
+  "total_samples": 28080,
+  "accuracy_pct": 99.24,
+  "per_class": {
+    "abnormal": {
+      "correct": 191,
+      "total": 382,
+      "accuracy_pct": 50.0
+    },
+    "normal": {
+      "correct": 27676,
+      "total": 27698,
+      "accuracy_pct": 99.92
+    }
+  },
+  "confusion_matrix": {
+    "abnormal": {
+      "abnormal": 191,
+      "normal": 191
+    },
+    "normal": {
+      "abnormal": 22,
+      "normal": 27676
+    }
+  },
+  "inference_time_ms": {
+    "mean": 2.876,
+    "median": 2.755,
+    "std": 0.563,
+    "min": 2.113,
+    "max": 14.79,
+    "p95": 3.769,
+    "p99": 4.938
+  },
+  "gpu_power": {
+    "sample_count": 599,
+    "duration_s": 83.98,
+    "mean_power_W": 11.2,
+    "min_power_W": 8.99,
+    "max_power_W": 18.65,
+    "total_energy_J": 940.26,
+    "total_energy_Wh": 0.2612
+  },
+  "total_inference_time_s": 80.767
+}
