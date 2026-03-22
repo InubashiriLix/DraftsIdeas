@@ -1,0 +1,156 @@
+\documentclass[
+  $if(fontsize)$
+    $fontsize$,
+  $else$
+    11pt,
+  $endif$
+  $if(lang)$
+    $babel-lang$,
+  $endif$
+  $if(papersize)$
+    $papersize$paper,
+  $else$
+    a4paper,
+  $endif$
+]{article}
+
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\usepackage{fixltx2e}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc}
+\usepackage{etoolbox}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{fancyvrb}
+\usepackage{framed}
+\usepackage{fvextra}
+\usepackage{upquote}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{tocloft}
+
+% ---------- engine / fonts ----------
+\ifxetex
+  \usepackage{fontspec}
+  \usepackage{xeCJK}
+
+  % 尽量模拟 Overleaf 常见 serif 风格
+  \setmainfont{TeX Gyre Termes}
+  \setsansfont{TeX Gyre Heros}
+  \setmonofont{DejaVu Sans Mono}
+
+  % 中文字体
+  \setCJKmainfont{Noto Serif CJK SC}
+  \setCJKsansfont{Noto Sans CJK SC}
+  \setCJKmonofont{Noto Sans Mono CJK SC}
+\else
+  \ifluatex
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+    \setmonofont{DejaVu Sans Mono}
+  \else
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+  \fi
+\fi
+
+% ---------- links ----------
+\hypersetup{
+  unicode=true,
+  pdftitle={$if(title-meta)$$title-meta$$endif$},
+  pdfauthor={$if(author-meta)$$author-meta$$endif$},
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+% ---------- paragraph / section ----------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}
+  {\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsubsection}{1em}{}
+
+\titlespacing*{\section}{0pt}{1.5em}{0.6em}
+\titlespacing*{\subsection}{0pt}{1.2em}{0.4em}
+\titlespacing*{\subsubsection}{0pt}{1em}{0.3em}
+
+% ---------- table of contents ----------
+\setcounter{tocdepth}{2}
+
+% ---------- images ----------
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>.8\textheight.8\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% ---------- code block ----------
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  breaklines,
+  breaksymbolleft={},
+  commandchars=\\\{\},
+  fontsize=\small
+}
+
+\definecolor{shadecolor}{RGB}{245,245,245}
+
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% ---------- tight list ----------
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+}
+
+% ---------- metadata ----------
+$if(title)$
+\title{\textbf{$title$}}
+$endif$
+
+$if(author)$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+$endif$
+
+$if(date)$
+\date{$date$}
+$else$
+\date{\today}
+$endif$
+
+\begin{document}
+
+$if(title)$
+\maketitle
+$endif$
+
+$if(toc)$
+\tableofcontents
+\newpage
+$endif$
+
+$body$
+
+\end{document}
