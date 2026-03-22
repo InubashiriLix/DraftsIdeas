@@ -1,0 +1,57 @@
+{
+  "weights": "/home/inubashiri/08_Drafts/CatNeuter/scripts/runs/train/weights/best.pt",
+  "total_samples": 94,
+  "accuracy_pct": 79.79,
+  "per_class": {
+    "intact": {
+      "correct": 47,
+      "total": 55,
+      "accuracy_pct": 85.45
+    },
+    "neutered": {
+      "correct": 28,
+      "total": 39,
+      "accuracy_pct": 71.79
+    }
+  },
+  "precision_recall_f1": {
+    "intact": {
+      "precision": 81.03,
+      "recall": 85.45,
+      "f1": 83.19
+    },
+    "neutered": {
+      "precision": 77.78,
+      "recall": 71.79,
+      "f1": 74.67
+    }
+  },
+  "confusion_matrix": {
+    "intact": {
+      "intact": 47,
+      "neutered": 8
+    },
+    "neutered": {
+      "intact": 11,
+      "neutered": 28
+    }
+  },
+  "inference_time_ms": {
+    "mean": 15.794,
+    "median": 10.616,
+    "std": 24.489,
+    "p95": 33.095,
+    "p99": 96.724
+  },
+  "gpu_power": {
+    "sample_count": 13,
+    "duration_s": 1.69,
+    "mean_power_W": 19.88,
+    "min_power_W": 17.82,
+    "max_power_W": 20.91,
+    "total_energy_J": 33.53,
+    "total_energy_Wh": 0.0093
+  },
+  "total_inference_time_s": 1.485,
+  "per_sample_energy_mJ": 313.98
+}

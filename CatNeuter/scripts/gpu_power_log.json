@@ -1,0 +1,9 @@
+{
+  "sample_count": 13,
+  "duration_s": 1.69,
+  "mean_power_W": 19.88,
+  "min_power_W": 17.82,
+  "max_power_W": 20.91,
+  "total_energy_J": 33.53,
+  "total_energy_Wh": 0.0093
+}

@@ -1,0 +1,7 @@
+{
+  "model": "yolov8n-cls.pt",
+  "epochs": 50,
+  "imgsz": 128,
+  "batch": 64,
+  "training_time_s": 93.53
+}
