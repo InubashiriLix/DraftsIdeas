@@ -1,0 +1,7 @@
+interface:
+  display_name: "make-a-noise"
+  short_description: "Speak labeled Chinese task updates and completion alerts."
+  default_prompt: "Use $make-a-noise for labeled Chinese notifications during this task."
+
+policy:
+  allow_implicit_invocation: true
